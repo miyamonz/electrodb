@@ -1,4 +1,3 @@
-const lib = require('@aws-sdk/lib-dynamodb')
 const util = require('@aws-sdk/lib-dynamodb/dist-cjs/commands/utils')
 const { isFunction } = require('./validations');
 const { ElectroError, ErrorCodes } = require('./errors');
@@ -18,6 +17,7 @@ const supportedClientVersions = {
 
 class DocumentClientV2Wrapper {
     static init(client) {
+        const lib = require('aws-sdk')
         return new DocumentClientV2Wrapper(client, lib);
     }
 
@@ -111,7 +111,8 @@ class DocumentClientV2Wrapper {
 
 class DocumentClientV3Wrapper {
     static init(client) {
-        return new DocumentClientV3Wrapper(client, lib);
+        const libV3 = require('@aws-sdk/lib-dynamodb')
+        return new DocumentClientV3Wrapper(client, libV3);
     }
 
     constructor(client, lib) {
