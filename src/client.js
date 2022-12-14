@@ -110,10 +110,10 @@ class DocumentClientV2Wrapper {
 }
 
 class DocumentClientV3Wrapper {
-    static init(client) {
-        const libV3 = require('@aws-sdk/lib-dynamodb')
-        return new DocumentClientV3Wrapper(client, libV3);
-    }
+    // static init(client) {
+    //     const libV3 = require('@aws-sdk/lib-dynamodb')
+    //     return new DocumentClientV3Wrapper(client, libV3);
+    // }
 
     constructor(client, lib) {
         this.client = client;
@@ -249,8 +249,8 @@ function normalizeClient(client) {
     if (client === undefined) return client;
     const version = identifyClientVersion(client);
     switch(version) {
-        case DocumentClientVersions.v3:
-            return DocumentClientV3Wrapper.init(client);
+        // case DocumentClientVersions.v3:
+        //     return DocumentClientV3Wrapper.init(client);
         case DocumentClientVersions.v2:
             return DocumentClientV2Wrapper.init(client);
         case DocumentClientVersions.electro:
